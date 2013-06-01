@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601055739) do
+ActiveRecord::Schema.define(:version => 20130601063257) do
+
+  create_table "locations", :force => true do |t|
+    t.string   "address_name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "state"
+    t.string   "suburb"
+    t.string   "country"
+    t.string   "country_code"
+    t.string   "postcode"
+    t.string   "is_main"
+    t.string   "geo_admin_0"
+    t.string   "geo_admin_1"
+    t.string   "geo_admin_2"
+    t.string   "geo_admin_3"
+    t.string   "geo_admin_4"
+    t.string   "geo_dlat"
+    t.string   "geo_dlong"
+    t.string   "geo_geocode_modified"
+    t.string   "geo_geocode_reqd"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "organisations", :force => true do |t|
     t.string   "name_display"
