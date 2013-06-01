@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :organisation %><br />
+    <%= f.collection_select :organisation_id, Organisation.all, :id, :name_display, :prompt => "Select an Organisation" %>
+  </div>
+
 
   <div class="field">
     <%= f.label :address_name %><br />
