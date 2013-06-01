@@ -2,7 +2,9 @@ Ngo::Application.routes.draw do
   resources :locations
 
 
-  resources :organisations
+  resources :organisations do
+    resources :locations
+  end
 
 
   # The priority is based upon order of creation:
