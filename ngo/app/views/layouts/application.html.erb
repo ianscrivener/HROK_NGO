@@ -3,10 +3,17 @@
 <head>
   <title>Ngo</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<ul class="nav nav-pills">
+  <li class="active"><%= link_to 'Home', home_path %></li>
+  <li><%= link_to 'Organisations', organisations_path %></li>
+  <li><%= link_to 'Locations', organisations_path %></li>
+</ul>
 
 <%= yield %>
 
