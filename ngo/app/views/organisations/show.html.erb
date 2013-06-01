@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name display:</b>
+  <%= @organisation.name_display %>
+</p>
+
+<p>
+  <b>Name short:</b>
+  <%= @organisation.name_short %>
+</p>
+
+<p>
+  <b>Name full:</b>
+  <%= @organisation.name_full %>
+</p>
+
+<p>
+  <b>Main email:</b>
+  <%= @organisation.main_email %>
+</p>
+
+<p>
+  <b>Main phone:</b>
+  <%= @organisation.main_phone %>
+</p>
+
+<p>
+  <b>Main fax:</b>
+  <%= @organisation.main_fax %>
+</p>
+
+<p>
+  <b>Main url:</b>
+  <%= @organisation.main_url %>
+</p>
+
+<p>
+  <b>Ngo short description:</b>
+  <%= @organisation.ngo_short_description %>
+</p>
+
+<p>
+  <b>Ngo long description:</b>
+  <%= @organisation.ngo_long_description %>
+</p>
+
+
+<%= link_to 'Edit', edit_organisation_path(@organisation) %> |
+<%= link_to 'Back', organisations_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@organisation) do |f| %>
+  <% if @organisation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@organisation.errors.count, "error") %> prohibited this organisation from being saved:</h2>
+
+      <ul>
+      <% @organisation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_display %><br />
+    <%= f.text_field :name_display %>
+  </div>
+  <div class="field">
+    <%= f.label :name_short %><br />
+    <%= f.text_field :name_short %>
+  </div>
+  <div class="field">
+    <%= f.label :name_full %><br />
+    <%= f.text_field :name_full %>
+  </div>
+  <div class="field">
+    <%= f.label :main_email %><br />
+    <%= f.text_field :main_email %>
+  </div>
+  <div class="field">
+    <%= f.label :main_phone %><br />
+    <%= f.text_field :main_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :main_fax %><br />
+    <%= f.text_field :main_fax %>
+  </div>
+  <div class="field">
+    <%= f.label :main_url %><br />
+    <%= f.text_field :main_url %>
+  </div>
+  <div class="field">
+    <%= f.label :ngo_short_description %><br />
+    <%= f.text_field :ngo_short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :ngo_long_description %><br />
+    <%= f.text_field :ngo_long_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
