@@ -1,4 +1,10 @@
 Ngo::Application.routes.draw do
+  resources :uris
+
+
+  resources :contacts
+
+
   resources :locations
 
 

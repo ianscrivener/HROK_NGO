@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @uri.type %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @uri.url %>
+</p>
+
+<p>
+  <b>Type other:</b>
+  <%= @uri.type_other %>
+</p>
+
+
+<%= link_to 'Edit', edit_uri_path(@uri) %> |
+<%= link_to 'Back', uris_path %>

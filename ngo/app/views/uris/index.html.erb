@@ -1,0 +1,27 @@
+<h1>Listing uris</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Url</th>
+    <th>Type other</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @uris.each do |uri| %>
+  <tr>
+    <td><%= uri.type %></td>
+    <td><%= uri.url %></td>
+    <td><%= uri.type_other %></td>
+    <td><%= link_to 'Show', uri %></td>
+    <td><%= link_to 'Edit', edit_uri_path(uri) %></td>
+    <td><%= link_to 'Destroy', uri, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Uri', new_uri_path %>

@@ -11,7 +11,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601072949) do
+ActiveRecord::Schema.define(:version => 20130601095911) do
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "email"
+    t.string   "skype"
+    t.string   "linkedin"
+    t.string   "in_main"
+    t.integer  "organisation_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "geo_vn_admin1", :id => false, :force => true do |t|
+    t.integer "ID_0"
+    t.integer "ID_1"
+    t.string  "ISO3_0"
+    t.string  "NAME_0"
+    t.string  "NAME_1"
+    t.string  "VARNAME_1"
+    t.string  "ENGTYPE_1"
+  end
+
+  create_table "geo_vn_admin2", :id => false, :force => true do |t|
+    t.integer "ID_0"
+    t.integer "ID_1"
+    t.integer "ID_2"
+    t.string  "ISO3_0"
+    t.string  "NAME_0"
+    t.string  "NAME_1"
+    t.string  "NAME_2"
+    t.string  "VARNAME_2"
+    t.string  "ENGTYPE"
+  end
+
+  create_table "geo_vn_admin3", :id => false, :force => true do |t|
+    t.float  "ID_0"
+    t.float  "ID_1"
+    t.float  "ID_2"
+    t.float  "ID_3"
+    t.string "ISO_3"
+    t.string "NAME_0"
+    t.string "NAME_1"
+    t.string "NAME_2"
+    t.string "NAME_3"
+    t.string "VARNAME_3"
+    t.string "ENGTYPE"
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "address_name"
@@ -49,6 +99,15 @@ ActiveRecord::Schema.define(:version => 20130601072949) do
     t.string   "ngo_long_description",  :limit => 1000
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "uris", :force => true do |t|
+    t.string   "type"
+    t.string   "url"
+    t.string   "type_other"
+    t.integer  "organisation_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
