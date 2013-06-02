@@ -45,7 +45,7 @@ function addGMSLayersToMap(map) {
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
-    map.setCenter(transformLonLatToEPSG900913(108.27, 14.05), 10);
+    map.setCenter(transformLonLatToEPSG900913(108.27, 14.05), 7);
 }
 
 function transformLonLatToEPSG900913(dlon, dlat) {
@@ -74,7 +74,7 @@ function addMarkerAtLonLat(map, dlon, dlat) {
     var position = transformLonLatToEPSG900913(dlon, dlat);
     var size = new OpenLayers.Size(40,40);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    var icon = new OpenLayers.Icon('assets/mappin.png', size, offset);   
+    var icon = new OpenLayers.Icon('/assets/mappin.png', size, offset);
 
     markers.addMarker(new OpenLayers.Marker(position, icon));        
 }
@@ -130,7 +130,7 @@ function addMarkerEntry(map, vectorLayer, dlon, dlat, name, address) {
 function addMarkers(map, lonLatList) {
     var length = lonLatList.length;
     for (var i = 0; i < length; i++) {
-        addMarkerAtLonLat(map, lonLatList[i].lon, lonLatList[i].lat);
+        addMarkerAtLonLat(map, lonLatList[i].geo_dlong, lonLatList[i].geo_dlat);
     }
 }
 
@@ -139,8 +139,8 @@ function init(lonLatDetails) {
     addGMSLayersToMap(map);
     setZoomAnimate(true);
 
-    var lonLatDetails = [{lon : 108.327792, lat: 15.880596}, {lon : 108.357264, lat : 15.886922}, 
-                         {lon : 108.329197, lat : 15.876355}];
+//    var lonLatDetails = [{lon : 108.327792, lat: 15.880596}, {lon : 108.357264, lat : 15.886922},
+//                         {lon : 108.329197, lat : 15.876355}];
 
     addMarkers(map, lonLatDetails);
     /*var markerVector = addMarkerVector(map, 'MarkerVector');
