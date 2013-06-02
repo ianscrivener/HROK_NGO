@@ -45,7 +45,7 @@ function addGMSLayersToMap(map) {
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
-    map.setCenter(transformLonLatToEPSG900913(108.27, 14.05), 6);
+    map.setCenter(transformLonLatToEPSG900913(108.27, 14.05), 10);
 }
 
 function transformLonLatToEPSG900913(dlon, dlat) {
@@ -79,14 +79,72 @@ function addMarkerAtLonLat(map, dlon, dlat) {
     markers.addMarker(new OpenLayers.Marker(position, icon));        
 }
 
-function init() {
+function addMarkerVector(map, vectorName) {
+    var renderer = OpenLayers.Util.getParameters(window.location.href).renderer;
+    renderer = (renderer) ? [renderer] : OpenLayers.Layer.Vector.prototype.renderers;
+    
+    var vectorLayer = new OpenLayers.Layer.Vector(vectorName, {
+        styleMap: new OpenLayers.StyleMap({'default':{
+            strokeColor: '#00FF00',
+            strokeOpacity: 1,
+            strokeWidth: 3,
+            fillColor: '#FF5500',
+            fillOpacity: 0.5,
+            pointRadius: 6,
+            pointerEvents: 'visiblePainted',
+            // label with \n linebreaks
+            label : 'Name: ${name}\n\nAddress: ${address}',            
+            fontColor: '${favColor}',
+            fontSize: '12px',
+            fontFamily: 'Courier New, monospace',
+            fontWeight: 'bold',
+            labelAlign: '${align}',
+            labelXOffset: '${xOffset}',
+            labelYOffset: '${yOffset}',
+            labelOutlineColor: 'white',
+            labelOutlineWidth: 3
+        }}),
+        renderers: renderer
+    });
+
+    map.addLayer(vectorLayer);
+    return vectorLayer;
+}
+
+function addMarkerEntry(map, vectorLayer, dlon, dlat, name, address) {
+
+    var position = transformLonLatToEPSG900913(dlon, dlat);
+    var pixel = map.getPixelFromLonLat(position);
+    var point = new OpenLayers.Geometry.Point(pixel.x, pixel.y);
+    var pointFeature = new OpenLayers.Feature.Vector(point);
+    pointFeature.attributes = {
+        name: name,
+        age: address,
+        favColor: 'red',
+        align: 'cm'
+    };
+    vectorLayer.drawFeature(pointFeature);
+    vectorLayer.addFeatures([pointFeature]);
+}
+
+function addMarkers(map, lonLatList) {
+    var length = lonLatList.length;
+    for (var i = 0; i < length; i++) {
+        addMarkerAtLonLat(map, lonLatList[i].lon, lonLatList[i].lat);
+    }
+}
+
+function init(lonLatDetails) {
     map = createGMSBaseMap('map');
     addGMSLayersToMap(map);
     setZoomAnimate(true);
-    addMarkerAtLonLat(map, 108.327792, 15.880596);
-    addMarkerAtLonLat(map, 108.357264, 15.886922);    
-    addMarkerAtLonLat(map, 108.329197, 15.876355);
-    addMarkerAtLonLat(map, 108.331343, 15.879255);
+
+    var lonLatDetails = [{lon : 108.327792, lat: 15.880596}, {lon : 108.357264, lat : 15.886922}, 
+                         {lon : 108.329197, lat : 15.876355}];
+
+    addMarkers(map, lonLatDetails);
+    /*var markerVector = addMarkerVector(map, 'MarkerVector');
+    addMarkerEntry(map, markerVector, 108.327792, 15.880596, 'xyz', 'vietnam');*/
 
     map.events.register('click', map, function(e){
         var position = map.getLonLatFromPixel(e.xy);
