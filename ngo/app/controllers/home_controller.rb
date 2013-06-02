@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-  	render 'index'
+  	render  :layout => 'map', :view => 'index'
   end
 end
