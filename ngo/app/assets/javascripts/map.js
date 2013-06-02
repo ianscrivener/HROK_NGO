@@ -10,9 +10,9 @@ function createGMSBaseMap(elementId) {
 
 function addGMSLayersToMap(map) {
 
-    function createLayerFromGeoServer(layerName, isBaseLayer, isTransparent) {
+    function createLayerFromGeoServer(layerName, displayName, isBaseLayer, isTransparent) {
         return new OpenLayers.Layer.WMS(
-                    "Vietnam Admin 0", "http://166.78.181.154:8080/geoserver/hrok/wms",
+                    displayName, "http://166.78.181.154:8080/geoserver/hrok/wms",
                     {
                         LAYERS: layerName,
                         STYLES: '',
@@ -36,12 +36,10 @@ function addGMSLayersToMap(map) {
         {type: google.maps.MapTypeId.ROADMAP}
     );
 
-    var VNM_adm0 = createLayerFromGeoServer('hrok:VNM_adm0', false, true);
+    var VNM_adm0 = createLayerFromGeoServer('hrok:VNM_adm0', 'Vietnam Admin 0', false, true);    
+    var VNM_adm1 = createLayerFromGeoServer('hrok:VNM_adm1', 'Vietnam Admin 1', false, true);
 
-    
-    var VNM_adm2 = createLayerFromGeoServer('hrok:VNM_adm1', false, true);
-
-    map.addLayers([grd]);
+    map.addLayers([grd, VNM_adm0, VNM_adm1]);
 
     // Google.v3 uses EPSG:900913 as projection, so we have to
     // transform our coordinates
