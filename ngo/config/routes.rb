@@ -1,6 +1,7 @@
 Ngo::Application.routes.draw do
   get '/search' => 'search#search'
   get '/search/show' => 'search#show'
+  get '/about' => 'about#index'
   resources :tags
 
 
