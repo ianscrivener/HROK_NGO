@@ -1,4 +1,7 @@
 Ngo::Application.routes.draw do
+  get '/search' => 'search#search'
+  get '/search/show' => 'search#show'
+
   resources :uris
 
 
