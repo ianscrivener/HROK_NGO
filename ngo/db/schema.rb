@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602011543) do
+ActiveRecord::Schema.define(:version => 20130602022006) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20130602011543) do
   end
 
   create_table "uris", :force => true do |t|
-    t.string   "type"
+    t.string   "uri_type"
     t.string   "url"
     t.string   "type_other"
     t.integer  "organisation_id"

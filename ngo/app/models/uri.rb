@@ -1,3 +1,3 @@
 class Uri < ActiveRecord::Base
-  attr_accessible :type, :type_other, :url
+  attr_accessible :uri_type, :type_other, :url
 end
