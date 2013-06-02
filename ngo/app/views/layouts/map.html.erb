@@ -19,13 +19,11 @@
 </head>
 <body onload="init()">
 
-<ul class="nav nav-pills">
-  <li class="active"><%= link_to 'Home', home_path %></li>
-  <li><%= link_to 'Organisations', organisations_path %></li>
-  <li><%= link_to 'Locations', locations_path %></li>
-</ul>
+<%= render "shared/menu" %>
+
 <div class="container">
 <%= yield %>
 </div>
+
 </body>
 </html>
