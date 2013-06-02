@@ -18,6 +18,7 @@ Ngo::Application.routes.draw do
 
   resources :organisations do
     resources :locations
+	resources :uris
   end
 
 
