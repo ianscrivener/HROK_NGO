@@ -14,5 +14,4 @@ class Organisation < ActiveRecord::Base
     end
   end
 
-
 end
