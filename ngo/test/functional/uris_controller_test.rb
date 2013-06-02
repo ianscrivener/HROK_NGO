@@ -18,7 +18,7 @@ class UrisControllerTest < ActionController::TestCase
 
   test "should create uri" do
     assert_difference('Uri.count') do
-      post :create, uri: { type: @uri.type, type_other: @uri.type_other, url: @uri.url }
+      post :create, uri: { uri_type: @uri.type, type_other: @uri.type_other, url: @uri.url }
     end
 
     assert_redirected_to uri_path(assigns(:uri))
@@ -35,7 +35,7 @@ class UrisControllerTest < ActionController::TestCase
   end
 
   test "should update uri" do
-    put :update, id: @uri, uri: { type: @uri.type, type_other: @uri.type_other, url: @uri.url }
+    put :update, id: @uri, uri: { uri_type: @uri.type, type_other: @uri.type_other, url: @uri.url }
     assert_redirected_to uri_path(assigns(:uri))
   end
 
