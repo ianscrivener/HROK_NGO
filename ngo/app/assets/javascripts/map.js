@@ -74,7 +74,7 @@ function addMarkerAtLonLat(map, dlon, dlat) {
     var position = transformLonLatToEPSG900913(dlon, dlat);
     var size = new OpenLayers.Size(40,40);
     var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
-    var icon = new OpenLayers.Icon('../images/pushpin.png', size, offset);   
+    var icon = new OpenLayers.Icon('assets/mappin.png', size, offset);   
 
     markers.addMarker(new OpenLayers.Marker(position, icon));        
 }
@@ -84,11 +84,14 @@ function init() {
     addGMSLayersToMap(map);
     setZoomAnimate(true);
     addMarkerAtLonLat(map, 108.327792, 15.880596);
+    addMarkerAtLonLat(map, 108.357264, 15.886922);    
+    addMarkerAtLonLat(map, 108.329197, 15.876355);
+    addMarkerAtLonLat(map, 108.331343, 15.879255);
 
     map.events.register('click', map, function(e){
         var position = map.getLonLatFromPixel(e.xy);
         addMarkerAtLonLat(map, position.lon, position.lat);
         var coordinates = document.getElementById('coordinates');
         coordinates.innerHTML = 'Co-ordinates: ' + position.lon + '-' + position.lat; 
-    })
+    });
 }
