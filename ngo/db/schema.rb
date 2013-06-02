@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601095911) do
+ActiveRecord::Schema.define(:version => 20130602010022) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(:version => 20130601095911) do
     t.string   "ngo_long_description",  :limit => 1000
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
+  end
+
+  create_table "services", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "active"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "uris", :force => true do |t|

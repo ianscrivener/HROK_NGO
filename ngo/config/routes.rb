@@ -1,4 +1,7 @@
 Ngo::Application.routes.draw do
+  resources :services
+
+
   resources :uris
 
 
