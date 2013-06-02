@@ -4,10 +4,6 @@ class SearchController < ApplicationController
 
   def show
     @organisations = Organisation.search(params[:search])
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @organisations }
-    end
+    render  :layout => 'map', :view => 'show'
   end
 end
